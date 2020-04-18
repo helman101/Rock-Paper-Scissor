@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: linear-gradient(#BD80FF,#7B47B3);
+    min-height: 100vh;
+    font-family: 'Baloo Bhaina 2', cursive;
+
+    
+}
+
+body {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    max-height: 100vh;
+    margin-top: 100px;
+}
+
+#title {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+
+    width: 150px;
+    height: 100px;
+    margin-left: 10px;
+    background-color: #FFFF80;
+    border-style: none;
+    background-size: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+    border-radius: 10px;
+
+}
+
+#Rock {
+    background-image: url(https://i.kym-cdn.com/photos/images/original/000/789/029/000.png);
+}
+
+#Paper {
+    background-image: url(https://raw.githubusercontent.com/snwh/paper-icon-theme/master/Paper/512x512/apps/accessories-clipboard.png);
+}
+
+#Scissors {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Scissors.svg/1200px-Scissors.svg.png);
+}
+
+
+h1 {
+
+    margin-bottom: 70px;
+}
+
+.choose { 
+
+    margin-bottom: 50px;
+}
+
+#btns {
+
+    text-align: center;
+}
+
+#btn_list {
+
+    display: flex;
+}
+
+.btn:hover {
+
+    box-shadow: 0 0 4px 5px #B3B236;
+    background-size: 90px;
+    transition: 0.1s;
+
+}
+
+#results {
+
+    margin: 50px;
+}
+
+.results {
+
+    text-align: center;
+    margin-bottom: 30px;
+}

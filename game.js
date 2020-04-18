@@ -1,65 +1,63 @@
-let num = () => Math.floor(Math.random()*3);
+let playerScore = 0;
+let computerScore = 0;
 
-
-function computerPlay(playerSay){
-  let numb = num();
-  let option = ["ROCK","PAPER","SCISSORS"];
-  let res = option.slice(numb,numb+1);
-  return (res==playerSay)? computerPlay(playerSay) : res;
-}
-
-function playRound(playerSelection,computerSelection){
+function playerChoice() {
+	let choice = prompt('Rock, Paper or Scissors?','');
+  let sensitiveChoice = choice.toLowerCase();
   
-  if (playerSelection=="SCISSORS" && computerSelection=="PAPER"){
-  	console.log("You win! Scissors beats Paper");
-  	return 'true';
-  }else if (playerSelection=="PAPER" && computerSelection=="ROCK"){   
-  	console.log("You win! Paper beats Rock");
-    return 'true';
-  }else if (playerSelection=="ROCK" && computerSelection=="SCISSORS"){
-  	console.log("You win! Rock beats Scissor");
-    return 'true';
-  }else if (playerSelection=="SCISSORS" && computerSelection=="ROCK"){
-  	console.log("You lose! Rock beats Scissors");
-    return 'false';
-	}else if (playerSelection=="ROCK" && computerSelection=="PAPER"){
-  	console.log("You lose! Rock beats Scissors");
-    return 'false';
-  }else if (playerSelection=="PAPER" && computerSelection=="SCISSORS"){
-  	console.log("You lose! Scissors beats Paper");
-    return 'false';
+  switch (choice) {
+    case 'rock':
+      return 1
+      break;
+    case 'paper':
+      return 2
+      break;
+    case 'scissors':
+      return 3
+      break;
   }
 }
 
-
-function game(){
-  let playerScore = 0;
-  let computerScore = 0;
-
-  let playerSay= prompt('Rock, Paper or Scissors?','');
-  (playRound(playerSay,computerPlay(playerSay))=='true')? playerScore ++ : computerScore ++;
-  console.log('Humans = ',playerScore,' - ','Machines = ',computerScore);
-  
-  playerSay= prompt('Rock, Paper or Scissors?','');
-  (playRound(playerSay,computerPlay(playerSay))=='true')? playerScore ++ : computerScore ++;
-  console.log('Humans = ',playerScore,' - ','Machines = ',computerScore);
-  
-  playerSay= prompt('Rock, Paper or Scissors?','');
-  (playRound(playerSay,computerPlay(playerSay))=='true')? playerScore ++ : computerScore ++;
-  console.log('Humans = ',playerScore,' - ','Machines = ',computerScore);
-  
-  playerSay= prompt('Rock, Paper or Scissors?','');
-  (playRound(playerSay,computerPlay(playerSay))=='true')? playerScore ++ : computerScore ++;
-  console.log('Humans = ',playerScore,' - ','Machines = ',computerScore);
-  
-  playerSay= prompt('Rock, Paper or Scissors?','');
-  (playRound(playerSay,computerPlay(playerSay))=='true')? playerScore ++ : computerScore ++;
-  console.log('Humans = ',playerScore,' - ','Machines = ',computerScore);
-  
-  console.log((playerScore>computerScore)? 'You win, machines sucks.' : 'You suck human.')
-
+function computerPlay() {
+  return (Math.floor(Math.random()*3))+1;
 }
 
-
+function playRound(playerSelection, computerSelection) {
+  console.log(computerSelection);
+  if (playerSelection == computerSelection){
+    console.log('Draw');
+    return 1;
+  } else if (playerSelection == 1 && computerSelection == 3){
+    console.log('You Won! Rock beats Scissors')
+    return 2;
+  } else if (playerSelection == 3 && computerSelection == 2){
+    console.log('You Won! Scissors beats Paper')
+    return 2;
+  } else if (playerSelection == 2 && computerSelection == 1){
+    console.log('You Won! Paper beats Rock')
+    return 2;
+  } else if (playerSelection == 1 && computerSelection == 2){
+    console.log('You Lost! Paper beats Rock')
+    return 3;
+  } else if (playerSelection == 2 && computerSelection == 3){
+    console.log('You Lost! Scissors beats Paper')
+    return 3;
+  } else if (playerSelection == 3 && computerSelection == 1){
+    console.log('You Lost! Rock beats Scissors')
+    return 3;
+  }
+}
+function game() {
+  for (let i = 0; i<5; i++){
+    let score = playRound(playerChoice(),computerPlay());
+    if (score == 2) {
+      playerScore += 1;
+    } else if (score == 3) {
+      computerScore += 1;
+    }
+    console.log('Human = ' + playerScore + ' - ' + 'Machine = ' + computerScore)
+  }
+  (playerScore > computerScore)? console.log('You Won! Machines Suck') : console.log('You Suck Human');
+}
 
 game();
